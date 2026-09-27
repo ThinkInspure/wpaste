@@ -1,10 +1,19 @@
 import Foundation
+import UniformTypeIdentifiers
 
 enum ClipboardPayload: Equatable, Sendable {
     case text(String)
     case url(URL)
     case image(ImageMetadata)
     case files([FileReference])
+
+    var isImage: Bool {
+        switch self {
+        case .image: true
+        case let .files(files): !files.isEmpty && files.allSatisfy(\.isImage)
+        default: false
+        }
+    }
 
     var kindLabel: String {
         switch self {
@@ -15,7 +24,7 @@ enum ClipboardPayload: Equatable, Sendable {
         case .image:
             "图片"
         case let .files(files):
-            "\(files.count) 个文件"
+            isImage ? (files.count == 1 ? "图片" : "\(files.count) 张图片") : "\(files.count) 个文件"
         }
     }
 }
@@ -30,6 +39,16 @@ struct FileReference: Codable, Equatable, Sendable {
     let path: String
     let displayName: String
     var bookmarkData: Data?
+
+    var isImage: Bool {
+        let extensionName = URL(fileURLWithPath: path).pathExtension.lowercased()
+        return UTType(filenameExtension: extensionName)?.conforms(to: .image) == true
+    }
+
+    var isVideo: Bool {
+        let extensionName = URL(fileURLWithPath: path).pathExtension.lowercased()
+        return UTType(filenameExtension: extensionName)?.conforms(to: .movie) == true
+    }
 
     init(path: String, displayName: String, bookmarkData: Data? = nil) {
         self.path = path

@@ -14,6 +14,16 @@ struct ClipboardItemTests {
         ]).kindLabel == "2 个文件")
     }
 
+    @Test func fileReferenceDetectsVideoTypes() {
+        #expect(FileReference(path: "/tmp/clip.mp4", displayName: "clip.mp4").isVideo)
+        #expect(FileReference(path: "/tmp/clip.MOV", displayName: "clip.MOV").isVideo)
+        #expect(FileReference(path: "/tmp/clip.m4v", displayName: "clip.m4v").isVideo)
+        #expect(!FileReference(path: "/tmp/song.mp3", displayName: "song.mp3").isVideo)
+        #expect(!FileReference(path: "/tmp/pic.png", displayName: "pic.png").isVideo)
+        #expect(!FileReference(path: "/tmp/notes.txt", displayName: "notes.txt").isVideo)
+        #expect(!FileReference(path: "/tmp/clip.mp4", displayName: "clip.mp4").isImage)
+    }
+
     @Test func clipboardItemsUseIdentityEquality() {
         let id = UUID()
         let source = ClipboardSource(bundleIdentifier: "com.apple.TextEdit", name: "文本编辑")
