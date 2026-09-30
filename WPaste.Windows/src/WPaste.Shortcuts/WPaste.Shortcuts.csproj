@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>WPaste.Shortcuts</RootNamespace>
+    <AssemblyName>WPaste.Shortcuts</AssemblyName>
+    <Description>RegisterHotKey 封装（v1.0 仅默认键）</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPaste.Platform\WPaste.Platform.csproj" />
+  </ItemGroup>
+
+</Project>

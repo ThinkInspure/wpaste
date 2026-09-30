@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.19041.0</TargetPlatformMinVersion>
+    <RootNamespace>WPaste.Windows</RootNamespace>
+    <AssemblyName>WPaste.Windows</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <Platforms>x64;ARM64</Platforms>
+    <RuntimeIdentifiers>win-x64;win-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <WindowsPackageType>None</WindowsPackageType>
+    <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+    <Description>WinUI 3 入口、托盘、设置、引导</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="H.NotifyIcon.WinUI" Version="2.2.0" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.241114003" />
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPaste.Clipboard\WPaste.Clipboard.csproj" />
+    <ProjectReference Include="..\WPaste.Core\WPaste.Core.csproj" />
+    <ProjectReference Include="..\WPaste.Paste\WPaste.Paste.csproj" />
+    <ProjectReference Include="..\WPaste.Persistence\WPaste.Persistence.csproj" />
+    <ProjectReference Include="..\WPaste.Platform\WPaste.Platform.csproj" />
+    <ProjectReference Include="..\WPaste.Shortcuts\WPaste.Shortcuts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\WPaste.ico">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Manifest Include="$(ApplicationManifest)" />
+  </ItemGroup>
+
+</Project>

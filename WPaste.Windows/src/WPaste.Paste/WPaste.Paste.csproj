@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>WPaste.Paste</RootNamespace>
+    <AssemblyName>WPaste.Paste</AssemblyName>
+    <Description>PasteCoordinator、剪贴板写回</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WPaste.Core\WPaste.Core.csproj" />
+    <ProjectReference Include="..\WPaste.Platform\WPaste.Platform.csproj" />
+  </ItemGroup>
+
+</Project>

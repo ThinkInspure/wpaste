@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>WPaste.Core</RootNamespace>
+    <AssemblyName>WPaste.Core</AssemblyName>
+    <Description>WPaste Windows 领域模型、指纹与设置 DTO（无 UI 依赖）</Description>
+  </PropertyGroup>
+
+</Project>
